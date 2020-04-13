@@ -1,0 +1,43 @@
+Assume epsilon = 0 for all the expeirments.
+Since the randomness for the data will affect the expeirments, set the random seed to be 0 to be more stable for the expeirments.
+
+Testing for the effect of number of speakers. Assume M = 5 and maxIter = 5 here.
+M = 5, maxIter = 5, SpeakerNumber = 1, accuracy: 1.0
+M = 5, maxIter = 5, SpeakerNumber = 8, accuracy: 1.0
+M = 5, maxIter = 5, SpeakerNumber = 16, accuracy: 1.0
+M = 5, maxIter = 5, SpeakerNumber = 24, accuracy: 1.0
+M = 5, maxIter = 5, SpeakerNumber = 32, accuracy: 1.0
+As the result, we can see that the accuracy is always 1.0, which means that the number of speaker does not really affect the classification accuracy on the test data. 
+
+Testing for the effect of number of maxIter. Assume M = 3 and SpeakerNumber = 32 here.
+M = 3, maxIter = 1, SpeakerNumber = 32, accuracy: 0.90625
+M = 3, maxIter = 5, SpeakerNumber = 32, accuracy: 0.9375
+M = 3, maxIter = 10, SpeakerNumber = 32, accuracy: 0.96875
+M = 3, maxIter = 15, SpeakerNumber = 32, accuracy: 1.0
+M = 3, maxIter = 20, SpeakerNumber = 32, accuracy: 0.96875
+M = 3, maxIter = 25, SpeakerNumber = 32, accuracy: 0.9375
+M = 3, maxIter = 30, SpeakerNumber = 32, accuracy: 0.96875
+Based on the result, we can see that there are some fluctuation as the maxIter changes. 
+As the maxIter increases from 1 to 15, the accuracy has a strict increasing trend. However, as the maxIter increases from 20 to 30, the accuracy decreases and then increases again, which fluctuates around 0.96875. Overfitting might be the reason, as the number of maxIter increases, the model fits too much on the training data, thus losing the generality for fitting the data.
+
+Testing for the effect of M. Assume maxIter = 5 and SpeakerNumber = 32.
+M = 3, maxIter = 5, SpeakerNumber = 32, accuracy: 0.9375
+M = 5, maxIter = 5, SpeakerNumber = 32, accuracy: 1.0
+M = 8, maxIter = 5, SpeakerNumber = 32, accuracy: 1.0
+M = 10, maxIter = 5, SpeakerNumber = 32, accuracy: 1.0
+M = 15, maxIter = 5, SpeakerNumber = 32, accuracy: 1.0
+M = 20, maxIter = 5, SpeakerNumber = 16, accuracy: 1.0
+Based on the result, we can tell that as the number of mixture components increases, the accuracy increases.
+The reason is that smaller number of M might not have the ability to fit the data and make prediction properly. 
+
+How might you improve the classification accuracy of the Gaussian mixtures, without adding more training data?
+    In order to improve the classification accuracy of the Gaussian mixtures without adding more training data, I would increase the number of mixtures. Based on the expeirments above, we can see that as the M is increasing, the accuracy increases too. 
+    In addition, I would also try to increase the number of maxIter, as we can see, increasing maxIter does increase the accuracy at some point. But we need to be careful about the choice of how much the maxIter should increase, as overfitting may occurs.
+    Removing the assumptions about the independency might also help improve the accuracy.
+
+When would your classifier decide that a given test utterance comes from none of the trained speaker models, and how would your classifier come to this decision?
+    The classifier does not really get to decide, because it will always calculate the log likelihood and choose the highest one.
+    We can add a thresh hold to be used to decide a given test utterance comes from none of the trained speaker models, ie. if the log likelihoods are lower than the threshhold, the classifier can then make the decision.
+
+Can you think of some alternative methods for doing speaker identification that don’t use Gaussian mixtures?
+    Some alternative methods like Neural Network or Hidden Markov Model would also produce good predictions.

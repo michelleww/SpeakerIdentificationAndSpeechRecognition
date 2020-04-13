@@ -1,0 +1,6 @@
+For the voice bank part:
+    User Name: Michelleww
+    Email: wangluya2014@gmail.com
+For the PCA:
+    Use this websit as tutorial: https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
+    I store the PCA bonus in the file called 'bonus.py'. The generated result and analysis is in the bonus_pca.txt file.

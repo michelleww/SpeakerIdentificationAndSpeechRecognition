@@ -1,0 +1,9 @@
+Dimension is 13, accuracy is 1.000000
+Dimension is 11, accuracy is 1.000000
+Dimension is  9, accuracy is 1.000000
+Dimension is  7, accuracy is 1.000000
+Dimension is  5, accuracy is 1.000000
+Dimension is  3, accuracy is 0.968750
+Dimension is  1, accuracy is 0.656250
+
+As we can see from the result above, we can see that the principle component analysis method works fine in the GMM models. The reduction of dimension still procuces pretty good accuracy. However, as we can see, if the dimension is reduced to be some extremely small number, the accuracy drops a lot.  
